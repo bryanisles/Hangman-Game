@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman Game</title>
+	<script>
+	</script>
+</head>
+<body>
+
+<div id="myTest">This is to test if the entered values where entered</div>
+<button type="button" onclick="myClicker()">Click Me</button>
+<script>
+	var musicianList = ["Logic", "Lecrae","Joey Badass"];
+	var randVal = Math.floor(Math.random() * musicianList.length);
+	var selectedMusician = musicianList[randVal].replace(/\s+/g,'');
+	var myTempList = [];
+	var myTempLetters = [];
+	var myLives = 12;
+	var myEnteredValues = [];
+
+// ----------------------------------------------------------------------
+// 1) discretizing each letter in a musician's name into an separate 
+//      array is not necessary and can be solely done utilizing the 
+//      string/array method indexOf()
+// 2) Simply using "selectedMusician.indexOf(userGuess)" would be an
+//      adequate approach to determine the existance of a specified
+//      value
+// [ ] Question: what draw backs exist using a looping method over a 
+//      direct indexing method or vice versa
+// [ ] Question: what other methods could be used to compare user inputs 
+//      versus predetermined lists
+	for (var i = 0; i < selectedMusician.length;i++) {
+		myTempList.push(selectedMusician[i].toLowerCase());
+	}
+// ----------------------------------------------------------------------
+
+
+	console.log(selectedMusician.indexOf("s"));
+	console.log(myTempList);
+
+
+// ======================================================================
+// *Event: onkeyup event checking the userinput against a discretized
+//           version of the selected musician's name
+	document.onkeyup = function(event) {
+		var userGuess = event.key;
+		
+
+		// To determine if the user input exists in the temporary list
+		console.log(myTempList.indexOf(userGuess.toLowerCase()));
+		
+		// Checking if the entered values exist in the list of already
+		//    entered values
+		console.log(myEnteredValues.indexOf(userGuess.toLowerCase()));
+
+// ----------------------------------------------------------------------		
+// 1) condition to check if the key the user enters (not case sensitive) 
+//      is a letter in the musicians name and if it hasn't been clicked 
+//      already
+		if (myTempList.indexOf(userGuess.toLowerCase()) >= 0 
+			&& myEnteredValues.indexOf(userGuess.toLowerCase()) < 0) {
+			console.log("Letter " + userGuess + " is correct")
+// 1) creates a list of already entered 
+			myEnteredValues.push(userGuess.toLowerCase());
+			
+		} else {
+			
+		}
+		/*for (var j = 0; j < myTempList.length; j++) {
+			if (userGuess == myTempList[j]) {
+				console.log("Letter " + userGuess + " is correct");
+			} else if (myTempLetters.indexOf(userGuess.toLowerCase()) >= 0){
+			
+			}
+		}*/
+	}
+
+	function myClicker() {
+			document.getElementById("myTest").innerHTML = myEnteredValues.join();
+	}
+</script>
+</body>
+</html>

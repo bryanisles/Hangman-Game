@@ -1,0 +1,33 @@
+.contentBox {
+	border:1px solid #ddd;
+	background-color:ghostwhite;
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+#myCover {
+	background-image: url("../images/cover-photo.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	filter:grayscale(0);
+}
+
+#myGameName {
+	background-color:rgba(0,0,0,0.5);
+	color:ghostwhite;
+}
+
+body {
+	background-color:#999;
+}
